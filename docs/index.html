@@ -634,7 +634,7 @@ body.fp-viewing-3 .fp-left, .fp-viewing-2 .fp-left, .fp-viewing-1 .fp-left, .fp-
                 </div>
             <div class="row h-100" style="margin-top: 3rem; margin-bottom:1rem;">
                 <div class="col bg" style="margin-left: 1rem; margin-right: 0.5rem;">
-                <div class="row" style="border-style: solid;border-radius: 3px; border-color: #393d42; border-width: 2px; background-color: #00b0aa; padding-right:3rem; padding-left: 0.7rem; padding-top: 1.5rem; padding-bottom: 0.8vw; box-shadow: 3px 3px 0px #393d42;">    
+                <div class="row"  id="izquierda" style="border-style: solid;border-radius: 3px; border-color: #393d42; border-width: 2px; background-color: #00b0aa; padding-right:3rem; padding-left: 0.7rem; padding-top: 1.5rem; padding-bottom: 16; box-shadow: 3px 3px 0px #393d42;">    
                     <ul style="list-style: none;">
                         <li>
                           <h2 class="w500">👨‍💻 Analizamos 5 expresiones de lenguaje inclusivo en Twitter</h2>
@@ -656,7 +656,7 @@ body.fp-viewing-3 .fp-left, .fp-viewing-2 .fp-left, .fp-viewing-1 .fp-left, .fp-
                 </div>
 
                 <div class="col bg" style="margin-left: 0.5rem; margin-right: 1rem;">
-                    <div class="row h-45" style="padding-bottom: 2vw; padding-right:2rem; padding-left: 0.7rem; padding-top: 1.5rem;  border-style: solid;border-radius: 3px; border-color: #393d42; border-width: 2px; background-color: #00b0aa; box-shadow: 3px 3px 0px #393d42;">
+                    <div class="row h-45" style="padding-bottom: 16; padding-right:2rem; padding-left: 0.7rem; padding-top: 1.5rem;  border-style: solid;border-radius: 3px; border-color: #393d42; border-width: 2px; background-color: #00b0aa; box-shadow: 3px 3px 0px #393d42;">
                         <div class="col bg">
                             <ul style="list-style: none; height: 50%">
                                 <li>
@@ -667,7 +667,7 @@ body.fp-viewing-3 .fp-left, .fp-viewing-2 .fp-left, .fp-viewing-1 .fp-left, .fp-
                         </div>
                     </div>
 
-                    <div class="row h-45 " style="margin-top:1em; padding-bottom: 1.5vw;padding-right:2rem; padding-left: 0.7rem;padding-top: 1.5rem;  border-style: solid;border-radius: 3px; border-color: #393d42; border-width: 2px; background-color: #00b0aa;box-shadow: 3px 3px 0px #393d42;">
+                    <div class="row h-45 " id="derecha" style="padding-bottom: 16; margin-top:1em; padding-right:2rem; padding-left: 0.7rem;padding-top: 1.5rem;  border-style: solid;border-radius: 3px; border-color: #393d42; border-width: 2px; background-color: #00b0aa;box-shadow: 3px 3px 0px #393d42;">
                         <div class="col bg align-self-end">
                             <div class="row">
                                 <ul style="list-style: none;">
@@ -1135,6 +1135,19 @@ body.fp-viewing-3 .fp-left, .fp-viewing-2 .fp-left, .fp-viewing-1 .fp-left, .fp-
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
 <script>
+D = document.getElementById('derecha').getBoundingClientRect().bottom
+I = document.getElementById('izquierda').getBoundingClientRect().bottom
+
+if (D > I) {
+    document.getElementById('izquierda').style.paddingBottom = parseInt(document.getElementById('izquierda').style.paddingBottom, 10) + (D-I);
+} else {
+        document.getElementById('derecha').style.paddingBottom = parseInt(document.getElementById('derecha').style.paddingBottom, 10) + (I-D);
+}
+
+// var left=document.getElementById('izquierda').style.height;
+
+
+// document.getElementById('derecha').style.paddingBottom=left;
 
 $('button').on('click', function(){
     $('button').removeClass('selected');
